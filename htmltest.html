@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Text</title>
+  <style>
+    /* Center the text container */
+    .text-container {
+      font-size: 52px;
+      text-align: center;
+      overflow: hidden;
+      white-space: pre-line;
+      width: 80%; /* Adjust the width as needed */
+      margin: 0 auto;
+    }
+
+    /* Hide all but the first word */
+    .text-container span {
+      display: none;
+    }
+
+    /* Animate the text */
+    @keyframes showWord {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="text-container">
+    <!-- Lyrics from "Never Gonna Give You Up" by Rick Astley -->
+    <span class="word">Never</span>
+    <span class="word">gonna</span>
+    <span class="word">give</span>
+    <span class="word">you</span>
+    <span class="word">up</span>
+    <span class="word">Never</span>
+    <span class="word">gonna</span>
+    <span class="word">let</span>
+    <span class="word">you</span>
+    <span class="word">down</span>
+    <span class="word">Never</span>
+    <span class="word">gonna</span>
+    <span class="word">run</span>
+    <span class="word">around</span>
+    <span class="word">and</span>
+    <span class="word">desert</span>
+    <span class="word">you</span>
+    <span class="word">Never</span>
+    <span class="word">gonna</span>
+    <span class="word">make</span>
+    <span class="word">you</span>
+    <span class="word">cry</span>
+    <span class="word">Never</span>
+    <span class="word">gonna</span>
+    <span class="word">say</span>
+    <span class="word">goodbye</span>
+    <span class="word">Never</span>
+    <span class="word">gonna</span>
+    <span class="word">tell</span>
+    <span class="word">a</span>
+    <span class="word">lie</span>
+    <span class="word">and</span>
+    <span class="word">hurt</span>
+    <span class="word">you</span>
+  </div>
+
+  <script>
+    // JavaScript to control the animation
+    document.addEventListener("DOMContentLoaded", function() {
+      const words = document.querySelectorAll('.word');
+      let index = 0;
+
+      // Show one word at a time
+      function showNextWord() {
+        words[index].style.display = 'inline-block';
+        words[index].style.animation = 'showWord 1s ease forwards';
+        index++;
+        if (index < words.length) {
+          setTimeout(showNextWord, 150); // adjust the delay between words (in milliseconds)
+        }
+      }
+
+      // Start the animation
+      showNextWord();
+    });
+  </script>
+</body>
+</html>
